@@ -1,0 +1,59 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Signature Pad</h1>
+    <p class="lead">Dylan Mozlowski and Allen Shih Signature Pad Demo</p>
+    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1 class="page-header">Please Sign:</h1>
+      <form method="post" class="sigPad" ng-submit="addSignature(name, output)">
+        <label for="name">Print your name</label>
+        <input type="text" name="name" id="name" class="name" ng-model="name">
+        <p class="drawItDesc">Draw your signature</p>
+        <ul class="sigNav">
+          <li class="drawIt"><a href="#draw-it">Please Draw</a></li>
+          <li class="clearButton"><a href="#clear">Clear</a></li>
+        </ul>
+        <div class="sig sigWrapper">
+          <div class="typed"></div>
+          <canvas class="pad" width="398" height="55"></canvas>
+          <input type="hidden" name="output" class="output" ng-model="output">
+        </div>
+        <button type="submit">I accept the terms of this agreement.</button>
+      </form>
+      <div ng-show="submitted">
+        <p>
+          Thank you for submitting! The id for the signature is: {{lastSig.id }}
+        </p>
+      </div>
+      <!-- <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
+        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
+      </ul> -->
+    </div>
+    <div class="col-md-6">
+      <h1 class="page-header">Retrieve Signature:</h1>
+      <input type="text" ng-model="searchSignatureId">
+      <button class="button" ng-click="findSignature()">Search</button>
+      <p>Name: {{foundSig.user}}</p>
+      <div class="searchSig">
+        <div class="sig sigWrapper">
+          <div class="typed"></div>
+          <canvas class="pad" width="398" height="55"></canvas>
+          <input type="hidden" name="output" class="output">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+      <p>Dylan Mozlowski and Allen Shih Signature Pad Demo</p>
+  </div>
+</footer>
